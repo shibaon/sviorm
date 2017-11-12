@@ -1,0 +1,14 @@
+{
+    "name": "svi/orm",
+    "description": "ORM svi framework files",
+    "license": "MIT",
+    "require": {
+        "svi/base": ">=1.0",
+        "doctrine/dbal": ">=2.5"
+    },
+    "autoload": {
+        "psr-4" : {
+            "Svi\\OrmBundle" : ""
+        }
+    }
+}
