@@ -6,6 +6,7 @@ use Doctrine\DBAL\Configuration;
 use Doctrine\DBAL\DriverManager;
 use Svi\Application;
 use Svi\ArrayAccess;
+use Svi\OrmBundle\Service\OrmService;
 
 class Bundle extends \Svi\Service\BundlesService\Bundle
 {
@@ -20,6 +21,13 @@ class Bundle extends \Svi\Service\BundlesService\Bundle
                 $app['dbs'][$name] = DriverManager::getConnection($db, new Configuration());
             }
         }
+    }
+
+    protected function getServices()
+    {
+        return [
+            OrmService::class,
+        ];
     }
 
 }
