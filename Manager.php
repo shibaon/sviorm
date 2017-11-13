@@ -580,6 +580,11 @@ abstract class Manager extends AppContainer implements ManagerInterface
         return $this->getReflection()->implementsInterface($interface);
     }
 
+	public function isRemovable()
+	{
+		return $this->getReflection()->implementsInterface(RemovableInterface::class);
+	}
+
 	/**
 	 * @return Entity
 	 */
