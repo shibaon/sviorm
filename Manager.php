@@ -84,11 +84,16 @@ abstract class Manager extends AppContainer implements ManagerInterface
 						$i++;
 						if ($i < 3)	continue;
 						if ($pVal === 'id') {
-							$column->setNotnull(true);
-							$column->setAutoincrement(true);
-							$table->setPrimaryKey(array($value[0]));
-							$this->cache['idFieldName'] = $key;
-							$this->cache['idColumnName'] = $column->getName();
+                            $column->setNotnull(true);
+                            $column->setAutoincrement(true);
+                            $table->setPrimaryKey(array($value[0]));
+                            $this->cache['idFieldName'] = $key;
+                            $this->cache['idColumnName'] = $column->getName();
+                        } elseif ($pVal === 'primary') {
+                            $column->setNotnull(true);
+                            $table->setPrimaryKey(array($value[0]));
+                            $this->cache['idFieldName'] = $key;
+                            $this->cache['idColumnName'] = $column->getName();
 						} elseif ($pVal === 'ai') {
 							$column->setAutoincrement(true);
 						} elseif ($pVal === 'null') {
