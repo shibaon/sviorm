@@ -400,12 +400,14 @@ abstract class Manager extends AppContainer implements ManagerInterface
 		} else {
 			$data = $this->getDataArray($entity, false, true);
 			if (count($data)) {
-                if ($this->getIdColumnName() && $this->getColumnsSchemas()[$this->getIdColumnName()]->getAutoincrement()) {
+                if ($this->getIdFieldName() && $this->getColumnsSchemas()[$this->getIdFieldName()]->getAutoincrement()) {
                     unset($data[$this->getIdColumnName()]);
                 }
 				$connection->insert($this->getTableName(), $data);
 			}
-			$this->setFieldValue($entity, $this->getIdFieldName(), $connection->lastInsertId());
+            if ($this->getIdFieldName() && $this->getColumnsSchemas()[$this->getIdFieldName()]->getAutoincrement()) {
+                $this->setFieldValue($entity, $this->getIdFieldName(), $connection->lastInsertId());
+            }
 		}
 		$this->cache['fetch'] = [];
 		$entity->setLoadedFromDb(true);
