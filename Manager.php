@@ -601,5 +601,10 @@ abstract class Manager extends AppContainer implements ManagerInterface
 
 		return new $className();
 	}
+	
+	public function hasField($fieldName)
+    {
+        return isset($this->getDbFieldsDefinition()[$fieldName]);
+    }
 
 }
